@@ -35,6 +35,10 @@ type Discovery struct {
 	// user.AuthenticationPolicyRequest and user.AuthenticationPolicyResponse is used for communication.
 	AuthenticationPolicyRPC string `json:"authentication_policy_rpc"`
 
+	// ClaimsRPC is the JSON-RPC name of the user claims query. user.ClaimRequest and user.ClaimResponse
+	// is used for communication.
+	ClaimsRPC string `json:"claims_rpc"`
+
 	// PasswordValidationRPC is JSON-RPC name of the password validation procedure.
 	// pwd.ValidationRequest and pwd.ValidationResponse is used for communication.
 	PasswordValidationRPC string `json:"password_validation_rpc"`
