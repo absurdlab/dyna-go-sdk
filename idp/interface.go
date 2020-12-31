@@ -8,8 +8,6 @@ import (
 
 // Interface defines how Tiga interacts with the identity provider.
 type Interface interface {
-	// Discovery returns the identity provider's configuration. Dyna will call this method on startup and cache the response.
-	Discovery(ctx context.Context) (*Discovery, error)
 	// User exchanges username for subjects and details.
 	User(ctx context.Context, request *user.UsernameForDetailRequest) (*user.UsernameForDetailResponse, error)
 	// AuthenticationPolicy queries for authentication policy to be applied to the user.
