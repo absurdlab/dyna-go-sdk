@@ -6,4 +6,6 @@ type RPCResponse struct {
 	OK bool `json:"ok"`
 	// Error is the error code of the failure when OK is false.
 	Error string `json:"error"`
+	// ErrorDescription description describes the Error.
+	ErrorDescription string `json:"error_description"`
 }
