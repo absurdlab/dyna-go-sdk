@@ -17,4 +17,6 @@ type Interface interface {
 	Claims(ctx context.Context, request *types.ClaimRequest) (*types.ClaimResponse, error)
 	// CheckPassword performs password validation.
 	CheckPassword(ctx context.Context, request *types.PasswordValidationRequest) (*types.PasswordValidationResponse, error)
+	// Health checks the IDP health
+	Health(ctx context.Context, request *types.HealthRequest) (*types.HealthResponse, error)
 }
