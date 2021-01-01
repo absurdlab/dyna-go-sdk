@@ -28,18 +28,17 @@ type Discovery struct {
 	ConsentPagePath string `json:"consent_page_path"`
 
 	// UsernameRPC is the JSON-RPC name of exchange for subject with username.
-	// user.UsernameForDetailRequest and user.UsernameForDetailResponse is used for communication.
 	UsernameRPC string `json:"user_subject_rpc"`
 
 	// AuthenticationPolicyRPC is the JSON-RPC name of querying for authentication policy.
-	// user.AuthenticationPolicyRequest and user.AuthenticationPolicyResponse is used for communication.
 	AuthenticationPolicyRPC string `json:"authentication_policy_rpc"`
 
-	// ClaimsRPC is the JSON-RPC name of the user claims query. user.ClaimRequest and user.ClaimResponse
-	// is used for communication.
+	// AuthenticationDetailsRPC is the JSON-RPC name of querying for authentication details.
+	AuthenticationDetailsRPC string `json:"authentication_details_rpc"`
+
+	// ClaimsRPC is the JSON-RPC name of the user claims query.
 	ClaimsRPC string `json:"claims_rpc"`
 
 	// PasswordValidationRPC is JSON-RPC name of the password validation procedure.
-	// pwd.ValidationRequest and pwd.ValidationResponse is used for communication.
 	PasswordValidationRPC string `json:"password_validation_rpc"`
 }

@@ -1,4 +1,4 @@
-package idp
+package types
 
 // RPCResponse is the common response payload.
 type RPCResponse struct {

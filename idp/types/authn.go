@@ -1,25 +1,6 @@
-package user
+package types
 
-import (
-	"encoding/json"
-	"github.com/absurdlab/dyna-go-sdk/idp"
-)
-
-// UsernameForDetailRequest is the payload for username subject query. It serves for
-// both Dyna-Identity communication and UI-Dyna communication
-type UsernameForDetailRequest struct {
-	Username string `json:"username"`
-}
-
-// UsernameForDetailResponse is the response payload for UsernameForSubjectRequest. It serves for
-// both Dyna-Identity communication and UI-Dyna communication.
-type UsernameForDetailResponse struct {
-	idp.RPCResponse
-	// Subject is the identifier for the user.
-	Subject string `json:"subject,omitempty"`
-	// Detail is the UI related data that will be relayed to the UI.
-	Detail json.RawMessage `json:"detail,omitempty"`
-}
+import "encoding/json"
 
 // AuthenticationPolicyRequest is the RPC payload for querying the authentication strategy
 // for the current session.
@@ -39,7 +20,7 @@ type AuthenticationPolicyRequest struct {
 
 // AuthenticationPolicyResponse is the RPC payload to respond to AuthenticationPolicyRequest.
 type AuthenticationPolicyResponse struct {
-	idp.RPCResponse
+	RPCResponse
 	// Amr is the resolved authentication methods to be carried out
 	// by Dyna in order. The returned value must be recognizable by
 	// Dyna, otherwise the authentication flow is broken. Dyna controls
@@ -51,19 +32,18 @@ type AuthenticationPolicyResponse struct {
 	Acr string `json:"acr"`
 }
 
-// ClaimRequest is the payload for requesting claims. It serves for both Dyna-Identity and
-// Tiga-Dyna communication.
-type ClaimRequest struct {
-	// Subject is the resolved user identifier
-	Subject string `json:"subject"`
-	// Claims is the list of claim names.
-	Claims []string `json:"claims"`
+// AuthenticationDetailsRequest requests the IDP to return detail information to assist the
+// frontend app to start a certain amr based authentication flow.
+type AuthenticationDetailsRequest struct {
+	// Amr is the next authentication method Dyna is prepared to execute
+	Amr string `json:"amr"`
 }
 
-// ClaimResponse responds to ClaimRequest. It serves for both Dyna-Identity and Tiga-Dyna communication.
-type ClaimResponse struct {
-	idp.RPCResponse
-	// Data contains the claim response data. It may or may not
-	// contain all the requested claims.
-	Data map[string]interface{} `json:"data"`
+// AuthenticationDetailsResponse responds to AuthenticationDetailsRequest.
+type AuthenticationDetailsResponse struct {
+	RPCResponse
+	// Amr is the requested amr.
+	Amr string `json:"amr"`
+	// Details is the arbitrary data Dyna will pass onto the frontend.
+	Details json.RawMessage `json:"details"`
 }
