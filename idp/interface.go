@@ -5,7 +5,7 @@ import (
 	"github.com/absurdlab/dyna-go-sdk/idp/types"
 )
 
-// Interface defines how Tiga interacts with the identity provider.
+// Interface defines how Dyna interacts with the identity provider.
 type Interface interface {
 	// User exchanges username for subjects and details.
 	User(ctx context.Context, request *types.UsernameForDetailRequest) (*types.UsernameForDetailResponse, error)
