@@ -9,23 +9,20 @@ type Discovery struct {
 	// too old or too new for Dyna, Dyna self terminates.
 	Version string `json:"version"`
 
-	// LoginPagePath is the relative path where the login page is hosted. Fragment is
+	// LoginPage is the absolute path where the login page is hosted. Fragment is
 	// not permitted. Query parameters will be retained. By design, the login page and
-	// Dyna must be hosted under the same domain. Dyna will use its own base URL and
-	// the LoginPagePath to render the absolute URL.
-	LoginPagePath string `json:"login_page_path"`
+	// Dyna must be hosted under the same domain.
+	LoginPage string `json:"login_page"`
 
-	// SelectAccountPagePath is the relative path where the account selection page is hosted.
+	// SelectAccountPage is the absolute path where the account selection page is hosted.
 	// Fragment is not permitted. Query parameters will be retained. By design, the account
-	// selection page and Dyna must be hosted under the same domain. Dyna will use its own
-	// base URL and the SelectAccountPagePath to render the absolute URL.
-	SelectAccountPagePath string `json:"select_account_page_path"`
+	// selection page and Dyna must be hosted under the same domain.
+	SelectAccountPage string `json:"select_account_page"`
 
-	// ConsentPagePath is the relative path where the consent page is hosted. Fragment is
+	// ConsentPage is the absolute path where the consent page is hosted. Fragment is
 	// not permitted. Query parameters will be retained. By design, the consent page and
-	// Dyna must be hosted under the same domain. Dyna will use its own base URL and
-	// the ConsentPagePath to render the absolute URL.
-	ConsentPagePath string `json:"consent_page_path"`
+	// Dyna must be hosted under the same domain.
+	ConsentPage string `json:"consent_page"`
 
 	// UsernameRPC is the JSON-RPC name of exchange for subject with username.
 	UsernameRPC string `json:"user_subject_rpc"`
