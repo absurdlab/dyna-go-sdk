@@ -38,4 +38,7 @@ type Discovery struct {
 
 	// PasswordValidationRPC is JSON-RPC name of the password validation procedure.
 	PasswordValidationRPC string `json:"password_validation_rpc"`
+
+	// HealthRPC is JSON-RPC name of the health procedure.
+	HealthRPC string `json:"health_rpc"`
 }
