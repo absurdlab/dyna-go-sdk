@@ -6,44 +6,36 @@ import (
 	"github.com/absurdlab/dyna-go-sdk/idp/types"
 )
 
-func User(idp idp.Interface) func(request *types.UsernameForDetailRequest, response *types.UsernameForDetailResponse) error {
-	return func(request *types.UsernameForDetailRequest, response *types.UsernameForDetailResponse) (err error) {
-		response, err = idp.User(context.Background(), request)
-		return
-	}
+type Server struct {
+	Idp idp.Interface
 }
 
-func AuthenticationPolicy(idp idp.Interface) func(request *types.AuthenticationPolicyRequest, response *types.AuthenticationPolicyResponse) error {
-	return func(request *types.AuthenticationPolicyRequest, response *types.AuthenticationPolicyResponse) (err error) {
-		response, err = idp.AuthenticationPolicy(context.Background(), request)
-		return
-	}
+func (s *Server) User(request *types.UsernameForDetailRequest, response *types.UsernameForDetailResponse) (err error) {
+	response, err = s.Idp.User(context.Background(), request)
+	return
 }
 
-func AuthenticationDetails(idp idp.Interface) func(request *types.AuthenticationDetailsRequest, response *types.AuthenticationDetailsResponse) error {
-	return func(request *types.AuthenticationDetailsRequest, response *types.AuthenticationDetailsResponse) (err error) {
-		response, err = idp.AuthenticationDetails(context.Background(), request)
-		return
-	}
+func (s *Server) AuthenticationPolicy(request *types.AuthenticationPolicyRequest, response *types.AuthenticationPolicyResponse) (err error) {
+	response, err = s.Idp.AuthenticationPolicy(context.Background(), request)
+	return
 }
 
-func Claims(idp idp.Interface) func(request *types.ClaimRequest, response *types.ClaimResponse) error {
-	return func(request *types.ClaimRequest, response *types.ClaimResponse) (err error) {
-		response, err = idp.Claims(context.Background(), request)
-		return
-	}
+func (s *Server) AuthenticationDetails(request *types.AuthenticationDetailsRequest, response *types.AuthenticationDetailsResponse) (err error) {
+	response, err = s.Idp.AuthenticationDetails(context.Background(), request)
+	return
 }
 
-func CheckPassword(idp idp.Interface) func(request *types.PasswordValidationRequest, response *types.PasswordValidationResponse) error {
-	return func(request *types.PasswordValidationRequest, response *types.PasswordValidationResponse) (err error) {
-		response, err = idp.CheckPassword(context.Background(), request)
-		return
-	}
+func (s *Server) Claims(request *types.ClaimRequest, response *types.ClaimResponse) (err error) {
+	response, err = s.Idp.Claims(context.Background(), request)
+	return
 }
 
-func Health(idp idp.Interface) func(request *types.HealthRequest, response *types.HealthResponse) error {
-	return func(request *types.HealthRequest, response *types.HealthResponse) (err error) {
-		response, err = idp.Health(context.Background(), request)
-		return
-	}
+func (s *Server) CheckPassword(request *types.PasswordValidationRequest, response *types.PasswordValidationResponse) (err error) {
+	response, err = s.Idp.CheckPassword(context.Background(), request)
+	return
+}
+
+func (s *Server) Health(request *types.HealthRequest, response *types.HealthResponse) (err error) {
+	response, err = s.Idp.Health(context.Background(), request)
+	return
 }
