@@ -35,6 +35,8 @@ type AuthenticationPolicyResponse struct {
 // AuthenticationDetailsRequest requests the IDP to return detail information to assist the
 // frontend app to start a certain amr based authentication flow.
 type AuthenticationDetailsRequest struct {
+	// Subject is the user identifier applying this method.
+	Subject string `json:"subject"`
 	// Amr is the next authentication method Dyna is prepared to execute
 	Amr string `json:"amr"`
 }
