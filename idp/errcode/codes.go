@@ -1,5 +1,6 @@
 package errcode
 
+// Standard error codes returned in the rpc response.
 const (
 	BadPassword      = "bad_password"
 	ExpiredPassword  = "expired_password"

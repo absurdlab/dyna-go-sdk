@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package idp;
+
+option go_package=".;pb";
+
+message Meta {
+  bool ok = 1;
+  Error error = 2;
+}
+
+message Error {
+  string code = 1;
+  string description = 2;
+}
+
+message GetUserRequest {
+  string username = 1;
+}
+
+message GetUserResponse {
+  Meta meta = 1;
+  string subject = 2;
+  bytes detail = 3;
+}
+
+message GetClaimsRequest {
+  string subject = 1;
+  repeated string claims = 2;
+}
+
+message GetClaimsResponse {
+  Meta meta = 1;
+  bytes data = 2;
+}
+
+message AuthenticationPolicyRequest {
+  string subject = 1;
+  string acr = 2;
+}
+
+message AuthenticationPolicyResponse {
+  Meta meta = 1;
+  repeated string amr = 2;
+  string acr = 3;
+}
+
+message AuthenticationDetailsRequest {
+  string subject = 1;
+  string amr = 2;
+}
+
+message AuthenticationDetailsResponse {
+  Meta meta = 1;
+  string amr = 2;
+  bytes details = 3;
+}
+
+message PasswordValidationRequest {
+  string subject = 1;
+  string password = 2;
+}
+
+message PasswordValidationResponse {
+  Meta meta = 1;
+}
+
+service Idp {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc GetClaims(GetClaimsRequest) returns (GetClaimsResponse) {}
+  rpc GetAuthPolicy(AuthenticationPolicyRequest) returns (AuthenticationPolicyResponse) {}
+  rpc GetAuthDetails(AuthenticationDetailsRequest) returns (AuthenticationDetailsResponse) {}
+  rpc CheckPassword(PasswordValidationRequest) returns (PasswordValidationResponse) {}
+}
